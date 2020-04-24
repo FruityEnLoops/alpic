@@ -2,11 +2,11 @@
 
 This is a project was made for the 2nd semester at Lille's IUT A.
 
-## What's this?
+### What's this?
 
 alpic is a logic parser written in C. Its goal is to parse a file, passed as an argument, and tell if a word, passed as a second argument, is part of the logic described in the file.
 
-## Limitations
+### Limitations
 
 This logic parser only supports 5 states at a time.
 
