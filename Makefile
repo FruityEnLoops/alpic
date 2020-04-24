@@ -3,4 +3,4 @@ src = ./src
 flags = -Wall -Wextra -Werror
 
 ALL: $(src)/alpic.c
-	$(CC) -o alpic.o $(src)/alpic.c $(flags)
+	$(CC) -o ./alpic $(src)/alpic.c $(flags)
