@@ -13,8 +13,11 @@ This logic parser only supports 5 states at a time.
 ### File format definition
 
 `Line 1` : alphabet definition
+
 `Line 2` : initial states
+
 `Line 3` : final states
+
 `Line 4-8` : state descriptions
 
 State descriptions are made using this format :
