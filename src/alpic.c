@@ -1,38 +1,44 @@
 #include <stdio.h>
 #include "fileChecker.h"
+#include "logic.h"
 
-int main(int argc, char** argv){
-    if(argc > 3){
-        printf("Error : too much arguments\n");
-        printf("Correct usage : alpic <filename> <phrase to check>\n");
-        return 1;
-    } else if(argc < 2){
-        printf("Error : not enough arguments\n");
-        printf("Correct usage : alpic <filename> <phrase to check>\n");
-        return 1;
-    }
-    FILE * filePointer;
-    filePointer = fopen(argv[1], "r"); // opens file in read only mode, write isn't needed
-    if(filePointer == NULL){
-        printf("Error : incorrect filename or failed to open file %s (maybe check your read privilegies?)\n", argv[1]);
-        printf("Correct usage : alpic <filename> <phrase to check>\n");
-        return 1;
-    }
-
+void printFile(FILE * filePointer){
+    printf("Content of file : \n\n");
     char ch;
-    do 
-    {
+    do {
         ch = fgetc(filePointer);
         putchar(ch);
     } while(ch != EOF);
-    printf("\n"); // prints missing newline from end of file
-    
-    rewind(filePointer);
+    printf("\n\n");
+}
 
-    printf("check result : %d\n", checkFile(filePointer));
+int main(int argc, char** argv){
+    if(argc > 3){
+        printf("Error : trop d'arguments\n");
+        printf("Utilisation : alpic <filename> <mot a vérifier>\n");
+        return 1;
+    } else if(argc < 2){
+        printf("Erreur : arguments requis\n");
+        printf("Utilisation : alpic <filename> <mot a vérifier>\n");
+        return 1;
+    }
+    FILE * filePointer;
+    filePointer = fopen(argv[1], "r"); // ouvre le fichier en lecture seule, aucun besoin d'écrire
+    if(filePointer == NULL){
+        printf("Erreur : nom de fichier incorrect ou impossible d'ouvrir %s (problème de permission de lecture?)\n", argv[1]);
+        printf("Utilisation : alpic <filename> <mot a vérifier>\n");
+        return 1;
+    }
 
-    printf("Everything looks fine!\n");
-    // when program is done
+    printFile(filePointer);
+    rewind(filePointer); // on ne peut pas le rewind dans la fonction... ?
+
+    int errorlevel = checkFile(filePointer);
+    if(errorlevel != 0){
+        printf("There was an error parsing the file. Make sure the file is correct.");
+        return 1;
+    }
+
     fclose(filePointer);
     return 0;
 }
