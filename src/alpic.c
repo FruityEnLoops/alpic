@@ -75,6 +75,7 @@ void printLogicInfo(FILE * filePointer){
     printLine(filePointer);
     printf("Transition :\n");
     printTransitions(filePointer);
+    rewind(filePointer);
 }
 
 int main(int argc, char** argv){
@@ -102,9 +103,8 @@ int main(int argc, char** argv){
     }
 
     printLogicInfo(filePointer);
-    rewind(filePointer); // on ne peut pas rewind dans une fonction
-
     printf("\n");
+    
 
     fclose(filePointer);
     return 0;
