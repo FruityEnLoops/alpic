@@ -1,15 +1,57 @@
 #include <stdio.h>
+#include <string.h>
 #include "fileChecker.h"
 #include "logic.h"
 
-void printFile(FILE * filePointer){
-    printf("Content of file : \n\n");
+void printLine(FILE * filePointer){
     char ch;
     do {
         ch = fgetc(filePointer);
         putchar(ch);
-    } while(ch != EOF);
-    printf("\n\n");
+    } while(ch != '\n');
+}
+
+char * printState(FILE * filePointer){
+    char spc = ' ';
+    char sep = '|';
+    char * etat = "";
+    for(int i = 0; i < 4; i++){
+        char ch;
+        int j = 0;
+        do{
+            ch = fgetc(filePointer);
+            strncat(etat, &ch, 1);
+            j++;
+        } while(ch != ';');
+        for(int k = 5 - j; k < 5; k++){
+            strncat(etat, spc, 1);
+        }
+        strncat(etat, sep, 1);
+    }
+    return etat;
+}
+
+// note : nécéssite que le filePointer soit déjà sur la ligne 4
+void printTransitions(FILE * filePointer){
+    printf("  |  0  |  1  |  2  |  3  |  4  |  5");
+    printf("0 | %s", printState(filePointer));
+    printf("1 | %s", printState(filePointer));
+    printf("2 | %s", printState(filePointer));
+    printf("3 | %s", printState(filePointer));
+    printf("4 | %s", printState(filePointer));
+    printf("5 | %s", printState(filePointer));
+}
+
+void printLogicInfo(FILE * filePointer){
+    printf("Description de l'automate :\n\n");
+    printf("Alphabet : ");
+    printLine(filePointer);
+    printf("Etats initial(aux) : ");
+    printLine(filePointer);
+    printf("Etats final(aux) : ");
+    printLine(filePointer);
+    printf("Transition :\n");
+    printTransitions(filePointer);
 }
 
 int main(int argc, char** argv){
@@ -17,7 +59,8 @@ int main(int argc, char** argv){
         printf("Error : trop d'arguments\n");
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
         return 1;
-    } else if(argc < 2){
+    }
+    if(argc < 3){
         printf("Erreur : arguments requis\n");
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
         return 1;
@@ -30,8 +73,8 @@ int main(int argc, char** argv){
         return 1;
     }
 
-    printFile(filePointer);
-    rewind(filePointer); // on ne peut pas le rewind dans la fonction... ?
+    printLogicInfo(filePointer);
+    rewind(filePointer); // on ne peut pas rewind dans une fonction
 
     int errorlevel = checkFile(filePointer);
     if(errorlevel != 0){
