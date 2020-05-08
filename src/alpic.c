@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "fileChecker.h"
 #include "logic.h"
+#define MAX_STRING_LENGTH 256
+#define MAX_LENGTH 5
 
 void printLine(FILE * filePointer){
     char ch;
@@ -11,35 +14,50 @@ void printLine(FILE * filePointer){
     } while(ch != '\n');
 }
 
-char * printState(FILE * filePointer){
-    char spc = ' ';
-    char sep = '|';
-    char * etat = "";
-    for(int i = 0; i < 4; i++){
-        char ch;
-        int j = 0;
+char** split(char * s, char delim){
+    char ch;
+    int incr = 0;
+    char** states = malloc(MAX_LENGTH * sizeof(void *));
+    for(int i = 0; i < 5; i++){
+        states[i] = NULL;
+        incr = incr++;
         do{
-            ch = fgetc(filePointer);
-            strncat(etat, &ch, 1);
-            j++;
-        } while(ch != ';');
-        for(int k = 5 - j; k < 5; k++){
-            strncat(etat, spc, 1);
-        }
-        strncat(etat, sep, 1);
+            ch = s[incr];
+            states[i] = realloc(states[i], incr + 2 * sizeof(char));
+            states[i][incr] = '\0';
+            states[i] = strncat(states[i], &ch, 1);
+            incr++;
+        } while(s[incr - 1] != delim && s[incr - 1] != '\0');
+        states[i][strlen(states[i]) - 1] = '\0';
     }
-    return etat;
+    states[4][strlen(states[4]) - 1] = '\0';
+    states[4][strlen(states[4]) - 2] = '\0';
+    return states;
+}
+
+void printState(FILE * filePointer){
+    char buffer[MAX_STRING_LENGTH] = "";
+    fgets(buffer, MAX_STRING_LENGTH, filePointer);
+    char** splitted = split(buffer, ';');
+    for(int i = 0; i < 5; i++){
+        printf("%-5s|", splitted[i]);
+    }
 }
 
 // note : nécéssite que le filePointer soit déjà sur la ligne 4
 void printTransitions(FILE * filePointer){
-    printf("  |  0  |  1  |  2  |  3  |  4  |  5");
-    printf("0 | %s", printState(filePointer));
-    printf("1 | %s", printState(filePointer));
-    printf("2 | %s", printState(filePointer));
-    printf("3 | %s", printState(filePointer));
-    printf("4 | %s", printState(filePointer));
-    printf("5 | %s", printState(filePointer));
+    printf("  |  0  |  1  |  2  |  3  |  4  |");
+    printf("\n0 |");
+    printState(filePointer);
+    printf("\n1 |");
+    printState(filePointer);
+    printf("\n2 |");
+    printState(filePointer);
+    printf("\n3 |");
+    printState(filePointer);
+    printf("\n4 |");
+    printState(filePointer);
+    printf("\n");
 }
 
 void printLogicInfo(FILE * filePointer){
@@ -65,8 +83,7 @@ int main(int argc, char** argv){
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
         return 1;
     }
-    FILE * filePointer;
-    filePointer = fopen(argv[1], "r"); // ouvre le fichier en lecture seule, aucun besoin d'écrire
+    FILE * filePointer = fopen(argv[1], "r"); // ouvre le fichier en lecture seule, aucun besoin d'écrire;
     if(filePointer == NULL){
         printf("Erreur : nom de fichier incorrect ou impossible d'ouvrir %s (problème de permission de lecture?)\n", argv[1]);
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
@@ -75,10 +92,10 @@ int main(int argc, char** argv){
 
     printLogicInfo(filePointer);
     rewind(filePointer); // on ne peut pas rewind dans une fonction
-
+    rewind(filePointer);
     int errorlevel = checkFile(filePointer);
     if(errorlevel != 0){
-        printf("There was an error parsing the file. Make sure the file is correct.");
+        printf("There was an error parsing the file. Make sure the file is correct.\n");
         return 1;
     }
 

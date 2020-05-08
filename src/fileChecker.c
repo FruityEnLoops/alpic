@@ -18,7 +18,7 @@ int countLines(FILE * filePointer){
 // vérification du fichier : chaque état a son délimiteur sur chaque ligne
 int checkStates(FILE * filePointer){
     char delim = ';';
-    char * stringBuffer = (char *) malloc( MAX_LENGTH );
+    char * stringBuffer = (char *) malloc(MAX_LENGTH);
     int cpt = 0;
 
     // passage des 3 premières lignes (headers)

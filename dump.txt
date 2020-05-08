@@ -1,0 +1,163 @@
+==670== Memcheck, a memory error detector
+==670== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==670== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==670== Command: ./alpic correctFile s
+==670== 
+==670== error calling PR_SET_PTRACER, vgdb might block
+==670== Conditional jump or move depends on uninitialised value(s)
+==670==    at 0x4839B06: strncat (vg_replace_strmem.c:351)
+==670==    by 0x109348: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109622: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Invalid write of size 1
+==670==    at 0x10941E: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109622: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==  Address 0x4a179de is 2 bytes before a block of size 10 alloc'd
+==670==    at 0x4838D7B: realloc (vg_replace_malloc.c:836)
+==670==    by 0x1092E2: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109622: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Conditional jump or move depends on uninitialised value(s)
+==670==    at 0x4839B06: strncat (vg_replace_strmem.c:351)
+==670==    by 0x109348: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10963F: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Invalid write of size 1
+==670==    at 0x10941E: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10963F: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==  Address 0x4a17d1e is 2 bytes before a block of size 10 alloc'd
+==670==    at 0x4838D7B: realloc (vg_replace_malloc.c:836)
+==670==    by 0x1092E2: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10963F: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Conditional jump or move depends on uninitialised value(s)
+==670==    at 0x4839B06: strncat (vg_replace_strmem.c:351)
+==670==    by 0x109348: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10965C: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Invalid write of size 1
+==670==    at 0x10941E: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10965C: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==  Address 0x4a17fbe is 2 bytes before a block of size 8 alloc'd
+==670==    at 0x4838D7B: realloc (vg_replace_malloc.c:836)
+==670==    by 0x1092E2: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10965C: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Conditional jump or move depends on uninitialised value(s)
+==670==    at 0x4839B06: strncat (vg_replace_strmem.c:351)
+==670==    by 0x109348: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109679: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Invalid write of size 1
+==670==    at 0x10941E: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109679: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==  Address 0x4a1825e is 2 bytes before a block of size 8 alloc'd
+==670==    at 0x4838D7B: realloc (vg_replace_malloc.c:836)
+==670==    by 0x1092E2: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109679: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Conditional jump or move depends on uninitialised value(s)
+==670==    at 0x4839B06: strncat (vg_replace_strmem.c:351)
+==670==    by 0x109348: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109696: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Invalid write of size 1
+==670==    at 0x1093C0: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109696: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==  Address 0x4a1845f is 1 bytes before a block of size 6 alloc'd
+==670==    at 0x48366AF: malloc (vg_replace_malloc.c:308)
+==670==    by 0x4838DE7: realloc (vg_replace_malloc.c:836)
+==670==    by 0x1092E2: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109696: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Invalid write of size 1
+==670==    at 0x1093F6: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109696: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==  Address 0x4a1845f is 1 bytes before a block of size 6 alloc'd
+==670==    at 0x48366AF: malloc (vg_replace_malloc.c:308)
+==670==    by 0x4838DE7: realloc (vg_replace_malloc.c:836)
+==670==    by 0x1092E2: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109696: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== Invalid write of size 1
+==670==    at 0x10941E: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109696: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==  Address 0x4a1845e is 2 bytes before a block of size 6 alloc'd
+==670==    at 0x48366AF: malloc (vg_replace_malloc.c:308)
+==670==    by 0x4838DE7: realloc (vg_replace_malloc.c:836)
+==670==    by 0x1092E2: split (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1095A2: printState (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x109696: printTransitions (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x10972A: printLogicInfo (in /mnt/c/DATA/Cours/alpic/alpic)
+==670==    by 0x1097EF: main (in /mnt/c/DATA/Cours/alpic/alpic)
+==670== 
+==670== 
+==670== HEAP SUMMARY:
+==670==     in use at exit: 326 bytes in 30 blocks
+==670==   total heap usage: 47 allocs, 17 frees, 2,422 bytes allocated
+==670== 
+==670== LEAK SUMMARY:
+==670==    definitely lost: 200 bytes in 5 blocks
+==670==    indirectly lost: 126 bytes in 25 blocks
+==670==      possibly lost: 0 bytes in 0 blocks
+==670==    still reachable: 0 bytes in 0 blocks
+==670==         suppressed: 0 bytes in 0 blocks
+==670== Rerun with --leak-check=full to see details of leaked memory
+==670== 
+==670== Use --track-origins=yes to see where uninitialised values come from
+==670== For lists of detected and suppressed errors, rerun with: -s
+==670== ERROR SUMMARY: 27 errors from 12 contexts (suppressed: 0 from 0)
