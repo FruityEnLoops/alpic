@@ -18,20 +18,23 @@ char** split(char * s, char delim){
     char ch;
     int incr = 0;
     char** states = malloc(MAX_LENGTH * sizeof(void *));
+    int stateSize = 0;
     for(int i = 0; i < 5; i++){
         states[i] = NULL;
-        incr = incr++;
+        stateSize = 0;
         do{
             ch = s[incr];
-            states[i] = realloc(states[i], incr + 2 * sizeof(char));
-            states[i][incr] = '\0';
+            states[i] = realloc(states[i], incr + 4 * sizeof(char));
+            states[i][stateSize] = '\0';
             states[i] = strncat(states[i], &ch, 1);
             incr++;
+            stateSize++;
         } while(s[incr - 1] != delim && s[incr - 1] != '\0');
-        states[i][strlen(states[i]) - 1] = '\0';
+        states[i][stateSize] = '\0';
     }
-    states[4][strlen(states[4]) - 1] = '\0';
-    states[4][strlen(states[4]) - 2] = '\0';
+    if(strlen(states[4]) > 0){
+        states[4][strlen(states[4]) - 2] = '\0';
+    }
     return states;
 }
 
@@ -41,7 +44,9 @@ void printState(FILE * filePointer){
     char** splitted = split(buffer, ';');
     for(int i = 0; i < 5; i++){
         printf("%-5s|", splitted[i]);
+        free(splitted[i]);
     }
+    free(splitted);
 }
 
 // note : nécéssite que le filePointer soit déjà sur la ligne 4
@@ -90,14 +95,16 @@ int main(int argc, char** argv){
         return 1;
     }
 
-    printLogicInfo(filePointer);
-    rewind(filePointer); // on ne peut pas rewind dans une fonction
-    rewind(filePointer);
     int errorlevel = checkFile(filePointer);
     if(errorlevel != 0){
         printf("There was an error parsing the file. Make sure the file is correct.\n");
         return 1;
     }
+
+    printLogicInfo(filePointer);
+    rewind(filePointer); // on ne peut pas rewind dans une fonction
+
+    printf("\n");
 
     fclose(filePointer);
     return 0;
