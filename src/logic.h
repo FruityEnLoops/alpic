@@ -1,0 +1,1 @@
+int checkWord(FILE * filePointer, logic l, char * word);

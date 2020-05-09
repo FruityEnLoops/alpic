@@ -9,6 +9,8 @@ alpic is a logic parser written in C. Its goal is to parse a file, passed as an 
 ### Limitations
 
 This logic parser only supports 5 states at a time.
+This logic parser only supports one initial state.
+This logic parser doesn't support non decisive logics (e.g. two different possible paths).
 
 ### File format definition
 
@@ -36,6 +38,4 @@ State descriptions are made using this format :
 
 ## TODO
 
-- Successfully parse and display the file.
-- Check if the file makes sense (integrity check)?
 - Actually check if the word works with that logic file.

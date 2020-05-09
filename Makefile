@@ -2,7 +2,7 @@ CC = gcc
 src = ./src
 CFLAGS = -g -Wall -Wextra -Werror
 
-ALL: $(src)/alpic.o $(src)/fileChecker.o $(src)/logic.o
+ALL: $(src)/alpic.o $(src)/fileChecker.o $(src)/logic.o $(src)/struct.o
 	$(CC) -o ./alpic $(src)/*.o $(CFLAGS)
 
 alpic.o: $(src)/alpic.c $(src)/fileChecker.o $(src)/fileChecker.h
@@ -13,6 +13,9 @@ fileChecker.o: $(src)/fileChecker.c
 
 logic.o: $(src)/logic.c $(src)/logic.h
 	$(CC) -c -o $(src)/logic.o logic.c $(CFLAGS)
+
+struct.o: $(src)/struct.c $(src)/struct.h
+	$(CC) -c -o $(src)/struct.o struct.c $(CFLAGS)
 
 clean: 
 	rm $(src)/*.o

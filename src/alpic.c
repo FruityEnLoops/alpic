@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "fileChecker.h"
+#include "struct.h"
 #include "logic.h"
+
 #define MAX_STRING_LENGTH 256
 #define MAX_LENGTH 5
 
@@ -20,12 +22,12 @@ char** split(char * s, char delim){
     char** states = malloc(MAX_LENGTH * sizeof(void *));
     int stateSize = 0;
     for(int i = 0; i < 5; i++){
-        states[i] = NULL;
+        states[i] = NULL; // on ne peut pas concatener avec rien, donc strncat va initialiser states[i] avec un endroit de la RAM si on ne le met pas a NULL
         stateSize = 0;
         do{
             ch = s[incr];
             states[i] = realloc(states[i], incr + 4 * sizeof(char));
-            states[i][stateSize] = '\0';
+            states[i][stateSize] = '\0'; // on affecte un \0 pour que strncat ne donne pas d'erreur et sache ou concatener ch
             states[i] = strncat(states[i], &ch, 1);
             incr++;
             stateSize++;
@@ -104,7 +106,11 @@ int main(int argc, char** argv){
 
     printLogicInfo(filePointer);
     printf("\n");
-    
+    logic l = createLogic(filePointer);
+    printf("etatInitial %c\n", l.etatInitial);
+    printf("etatAcceptant %s\n", l.etatAcceptant);
+    printf("alphabet %s\n", l.alphabet);
+    // checkWord(filePointer, logic, argv[2]);
 
     fclose(filePointer);
     return 0;
