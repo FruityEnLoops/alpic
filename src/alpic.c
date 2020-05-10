@@ -95,23 +95,25 @@ int main(int argc, char** argv){
     if(filePointer == NULL){
         printf("Erreur : nom de fichier incorrect ou impossible d'ouvrir '%s' (problème de permission de lecture?)\n", argv[1]);
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
+        fclose(filePointer);
         return 1;
     }
 
     int errorlevel = checkFile(filePointer);
     if(errorlevel != 0){
         printf("Ce fichier n'est pas accepté. Vérifiez que le fichier est correct.\n");
+        fclose(filePointer);
         return 1;
     }
 
     printLogicInfo(filePointer);
     printf("\n");
     logic l = createLogic(filePointer);
-    
+
     if(checkWord(filePointer, l, argv[2]) == 0){
-        printf("✓ Mot accepté!");
+        printf("✓ Mot accepté!\n");
     } else {
-        printf("✘ Mot refusé!");
+        printf("✘ Mot refusé!\n");
     }
     fclose(filePointer);
     return 0;

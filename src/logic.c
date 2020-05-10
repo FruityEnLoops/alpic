@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "struct.h"
 #include "alpic.h"
+
 #define MAX_STRING_LENGTH 256
 
 // checks if a string contains the passed char, return 1 if true, 0 if false
@@ -25,10 +27,13 @@ int contains(char c, char** state){
 
 int checkWord(FILE * filePointer, logic l, char * word){
     int currentState = 0;
+
+    int returnVal = 0;
     
     int wordSize = strlen(word);
 
     char buffer[MAX_STRING_LENGTH] = "";
+    rewind(filePointer);
     for(int i = 0; i < 3; i++){
         fgets(buffer, MAX_STRING_LENGTH, filePointer);
     }
@@ -52,13 +57,19 @@ int checkWord(FILE * filePointer, logic l, char * word){
         if(possibleChange != 5){
             currentState = possibleChange;
         } else {
-            return 1;
+            returnVal = 1;
+            break;
         }
     }
 
-    printf("%s", l.alphabet);
-    fgetc(filePointer);
-    if(containsString(currentState, l.etatAcceptant) == 1){
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            free((*(states[i]))[j]);
+        }
+        free(*states[i]);
+    }
+
+    if(containsString(currentState, l.etatAcceptant) == 1 && returnVal == 0){
         return 0;
     } else {
         return 1;
