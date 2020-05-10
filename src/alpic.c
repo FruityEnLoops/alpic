@@ -93,14 +93,14 @@ int main(int argc, char** argv){
     }
     FILE * filePointer = fopen(argv[1], "r"); // ouvre le fichier en lecture seule, aucun besoin d'écrire;
     if(filePointer == NULL){
-        printf("Erreur : nom de fichier incorrect ou impossible d'ouvrir %s (problème de permission de lecture?)\n", argv[1]);
+        printf("Erreur : nom de fichier incorrect ou impossible d'ouvrir '%s' (problème de permission de lecture?)\n", argv[1]);
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
         return 1;
     }
 
     int errorlevel = checkFile(filePointer);
     if(errorlevel != 0){
-        printf("There was an error parsing the file. Make sure the file is correct.\n");
+        printf("Ce fichier n'est pas accepté. Vérifiez que le fichier est correct.\n");
         return 1;
     }
 
@@ -110,8 +110,11 @@ int main(int argc, char** argv){
     printf("etatInitial %c\n", l.etatInitial);
     printf("etatAcceptant %s\n", l.etatAcceptant);
     printf("alphabet %s\n", l.alphabet);
-    // checkWord(filePointer, logic, argv[2]);
-
+    // if(checkWord(filePointer, logic, argv[2]) == 0){
+    //     printf("✓ Mot accepté!");
+    // } else {
+    //     printf("✘ Mot refusé!");
+    // }
     fclose(filePointer);
     return 0;
 }
