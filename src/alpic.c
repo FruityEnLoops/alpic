@@ -107,14 +107,12 @@ int main(int argc, char** argv){
     printLogicInfo(filePointer);
     printf("\n");
     logic l = createLogic(filePointer);
-    printf("etatInitial %c\n", l.etatInitial);
-    printf("etatAcceptant %s\n", l.etatAcceptant);
-    printf("alphabet %s\n", l.alphabet);
-    // if(checkWord(filePointer, logic, argv[2]) == 0){
-    //     printf("✓ Mot accepté!");
-    // } else {
-    //     printf("✘ Mot refusé!");
-    // }
+    
+    if(checkWord(filePointer, l, argv[2]) == 0){
+        printf("✓ Mot accepté!");
+    } else {
+        printf("✘ Mot refusé!");
+    }
     fclose(filePointer);
     return 0;
 }
