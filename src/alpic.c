@@ -82,18 +82,18 @@ void printLogicInfo(FILE * filePointer){
 
 int main(int argc, char** argv){
     if(argc > 3){
-        printf("Error : trop d'arguments\n");
+        printf("✘ Erreur : trop d'arguments\n");
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
         return 1;
     }
     if(argc < 3){
-        printf("Erreur : arguments requis\n");
+        printf("✘ Erreur : arguments requis\n");
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
         return 1;
     }
     FILE * filePointer = fopen(argv[1], "r"); // ouvre le fichier en lecture seule, aucun besoin d'écrire;
     if(filePointer == NULL){
-        printf("Erreur : nom de fichier incorrect ou impossible d'ouvrir '%s' (problème de permission de lecture?)\n", argv[1]);
+        printf("✘ Erreur : nom de fichier incorrect ou impossible d'ouvrir '%s' (problème de permission de lecture?)\n", argv[1]);
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
         fclose(filePointer);
         return 1;
@@ -111,9 +111,9 @@ int main(int argc, char** argv){
     logic l = createLogic(filePointer);
 
     if(checkWord(filePointer, l, argv[2]) == 0){
-        printf("✓ Mot accepté!\n");
+        printf("\033[32;01m✓ Mot accepté!\033[00m\n\n");
     } else {
-        printf("✘ Mot refusé!\n");
+        printf("\033[31;01m✘ Mot refusé!\033[00m\n\n");
     }
     fclose(filePointer);
     return 0;
