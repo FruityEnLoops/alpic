@@ -28,7 +28,7 @@ int contains(char c, char** state){
 int checkWord(FILE * filePointer, logic l, char * word){
     int currentState;
     if ('0' <= l.etatInitial && l.etatInitial <= '9') {
-        currentState = l.etatInitial - '0';
+        currentState = (char) l.etatInitial - '0';
     } else { 
         return 1;
     }

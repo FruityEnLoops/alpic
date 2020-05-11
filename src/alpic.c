@@ -95,7 +95,6 @@ int main(int argc, char** argv){
     if(filePointer == NULL){
         printf("✘ Erreur : nom de fichier incorrect ou impossible d'ouvrir '%s' (problème de permission de lecture?)\n", argv[1]);
         printf("Utilisation : alpic <filename> <mot a vérifier>\n");
-        fclose(filePointer);
         return 1;
     }
 
