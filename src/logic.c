@@ -6,7 +6,7 @@
 
 #define MAX_STRING_LENGTH 256
 
-// checks if a string contains the passed char, return 1 if true, 0 if false
+// vérifie si un string contient un char (et renvoi 1 pour true et 0 pour false, strchr renvoyant un pointer)
 int containsString(char c, char* s){
     if(strchr(s, c) == NULL){
         return 0;
@@ -15,7 +15,7 @@ int containsString(char c, char* s){
     }
 }
 
-// checks if a state contains the passed char, return state number if true, 5 if false
+// vérifie que l'etat contiens le char, renvoi le numéro de l'etat si trouvé, sinon 5
 int contains(char c, char** state){
     for(int i = 0; i < 5; i++){
         if(containsString(c, state[i])){
@@ -67,6 +67,7 @@ int checkWord(FILE * filePointer, logic l, char * word){
         }
     }
 
+    // libère les mallocs créés par split()
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
             free((*(states[i]))[j]);
