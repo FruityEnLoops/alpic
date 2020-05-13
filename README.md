@@ -35,7 +35,3 @@ State descriptions are made using this format :
 ;ab;a;b;c;
 0 1 2 3 4 
 ```
-
-## TODO
-
-- Actually check if the word works with that logic file.
